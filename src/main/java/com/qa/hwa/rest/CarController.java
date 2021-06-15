@@ -41,4 +41,9 @@ public class CarController {
 	public CarDTO updateCar(@RequestBody Car car, @PathVariable int id) {
 		return this.service.updateCar(id, car);
 	}
+	
+	@DeleteMapping("/remove/{id}")
+	public boolean delete(@PathVariable int id) {
+		return this.service.delete(id);
+	}
 }
