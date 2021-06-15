@@ -1,6 +1,9 @@
 package com.qa.hwa.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +28,10 @@ public class CarController {
 	@PostMapping("/create")
 	public CarDTO createCar(@RequestBody Car car) {
 		return this.service.createCar(car);
+	}
+	
+	@GetMapping("/all")
+	public List<CarDTO> getCars(){
+		return this.service.getCars();
 	}
 }
