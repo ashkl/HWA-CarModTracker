@@ -1,8 +1,12 @@
 package com.qa.hwa.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qa.hwa.domain.Car;
 import com.qa.hwa.domain.Modification;
 import com.qa.hwa.dto.ModificationDTO;
 import com.qa.hwa.repo.ModificationRepo;
@@ -25,6 +29,19 @@ public class ModificationService {
 	public ModificationDTO createMod(Modification mod) {
 		Modification saved = this.repo.save(mod);
 		return this.mapper.mapToDTO(saved);
+	}
+	
+	public List<ModificationDTO> getModsByCar(Integer id){
+		Car car = new Car(id);
+		List<Modification> mods = this.repo.findByCar(car);
+		List<ModificationDTO> dtos =  new ArrayList<>();
+		
+		ModificationDTO dto = null;
+		for (Modification mod : mods) {
+			dto = this.mapper.mapToDTO(mod);
+			dtos.add(dto);
+		}
+		return dtos;
 	}
 
 }
