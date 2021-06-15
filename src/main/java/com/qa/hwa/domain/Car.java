@@ -142,6 +142,33 @@ public class Car {
 		this.mods = mods;
 	}
 
+	public Car(String make, String model, Integer year, String colour, String trans, String fuel, Integer bhp,
+			Long boughtMileage) {
+		super();
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.colour = colour;
+		this.trans = trans;
+		this.fuel = fuel;
+		this.bhp = bhp;
+		this.boughtMileage = boughtMileage;
+	}
+
+	public Car(Integer carId, String make, String model, Integer year, String colour, String trans, String fuel,
+			Integer bhp, Long boughtMileage) {
+		super();
+		this.carId = carId;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.colour = colour;
+		this.trans = trans;
+		this.fuel = fuel;
+		this.bhp = bhp;
+		this.boughtMileage = boughtMileage;
+	}
+
 	@Override
 	public String toString() {
 		return "Car [carId=" + carId + ", make=" + make + ", model=" + model + ", year=" + year + ", colour=" + colour
