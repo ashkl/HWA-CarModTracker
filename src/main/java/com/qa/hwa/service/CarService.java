@@ -3,6 +3,8 @@ package com.qa.hwa.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,21 @@ public class CarService {
 		}
 
 		return dtos;
+	}
+	
+	public CarDTO updateCar(Integer id, Car newData) {
+		Car existing = this.repo.findById(id).orElseThrow(() -> new EntityNotFoundException());
+		
+		existing.setMake(newData.getMake());
+		existing.setModel(newData.getModel());
+		existing.setYear(newData.getYear());
+		existing.setColour(newData.getColour());
+		existing.setTrans(newData.getTrans());
+		existing.setFuel(newData.getFuel());
+		existing.setBhp(newData.getBhp());
+		existing.setBoughtMileage(newData.getBoughtMileage());
+		
+		Car updated = this.repo.save(existing);
+		return this.mapper.mapToDTO(updated);
 	}
 }
