@@ -40,3 +40,25 @@ const renderCar = ({ id, make, model, year, colour, trans, fuel, bhp, boughtMile
 }
 
 getCars();
+
+document.getElementById("newForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const data = {
+        make: this.make.value,
+        model: this.model.value,
+        year: this.year.value,
+        colour: this.colour.value,
+        trans: this.trans.value,
+        fuel: this.fuel.value,
+        bhp: this.bhp.value,
+        boughtMileage: this.boughtMileage.value
+    }
+
+    axios.post("/cars/create", data)
+        .then(res => {
+            getCars();
+            this.make.focus();
+        }).catch(err => console.log(err));
+    console.log(this);
+});
