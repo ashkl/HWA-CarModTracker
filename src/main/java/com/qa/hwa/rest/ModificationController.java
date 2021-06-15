@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +35,10 @@ public class ModificationController {
 	@GetMapping("/findByCar/{id}")
 	public List<ModificationDTO> getModsByCar(@PathVariable int id){
 		return this.service.getModsByCar(id);
+	}
+	
+	@PutMapping("/update/{id}")
+	public ModificationDTO updateMod(@RequestBody Modification mod, @PathVariable int id) {
+		return this.service.updateMod(id, mod);
 	}
 }

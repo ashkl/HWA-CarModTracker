@@ -3,6 +3,8 @@ package com.qa.hwa.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,19 @@ public class ModificationService {
 			dtos.add(dto);
 		}
 		return dtos;
+	}
+	
+	public ModificationDTO updateMod(Integer id, Modification newData) {
+		Modification existing = this.repo.findById(id).orElseThrow(() -> new EntityNotFoundException());
+		
+		existing.setModName(newData.getModName());
+		existing.setModDesc(newData.getModDesc());
+		existing.setInstallDate(newData.getInstallDate());
+		existing.setInstallMileage(newData.getInstallMileage());
+		existing.setModPrice(newData.getModPrice());
+		
+		Modification updated = this.repo.save(existing);
+		return this.mapper.mapToDTO(updated);
 	}
 
 }
