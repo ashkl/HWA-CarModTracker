@@ -1,5 +1,6 @@
 package com.qa.hwa.integration;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -70,4 +71,8 @@ public class ModificationIntegrationTest {
 		this.mvc.perform(put("/mods/update/2").content(updateModAsJSON).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().json(updatedModAsJSON));
 	}
 	
+	@Test
+	void testRemove() throws Exception {
+		this.mvc.perform(delete("/mods/remove/1")).andExpect(status().isOk()).andExpect(content().string("true"));
+	}
 }

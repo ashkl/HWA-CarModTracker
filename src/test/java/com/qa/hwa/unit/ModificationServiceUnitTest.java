@@ -86,4 +86,19 @@ public class ModificationServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
 		Mockito.verify(this.repo, Mockito.times(1)).save(updatedMod);	
 	}
+	
+	@Test
+	void testDelete() {
+		//GIVEN
+		Integer testId = 1;
+		boolean exists = false;
+		
+		//WHEN
+		Mockito.when(this.repo.existsById(testId)).thenReturn(exists);
+		
+		//THEN
+		assertThat(this.service.delete(testId)).isEqualTo(!exists);
+		
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(testId);
+	}
 }
