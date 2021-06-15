@@ -2,6 +2,7 @@ package com.qa.hwa.integration;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -57,5 +58,16 @@ public class CarIntegrationTest {
 		String testCarsAsJSONArray = this.mapper.writeValueAsString(testCars);
 		
 		this.mvc.perform(get("/cars/all")).andExpect(status().isOk()).andExpect(content().json(testCarsAsJSONArray));
+	}
+	
+	@Test
+	void testUpdate() throws Exception{
+		Car updateCar =  new Car("BMW", "320cd", 2005, "Titanium Silver", "Manual", "Diesel", 300, 120000L);
+		String updateCarAsJSON = this.mapper.writeValueAsString(updateCar);
+		
+		Car updatedCar =  new Car(1, "BMW", "320cd", 2005, "Titanium Silver", "Manual", "Diesel", 300, 120000L);
+		String updatedCarAsJSON = this.mapper.writeValueAsString(updatedCar);
+		
+		this.mvc.perform(put("/cars/update/1").content(updateCarAsJSON).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().json(updatedCarAsJSON));
 	}
 }
