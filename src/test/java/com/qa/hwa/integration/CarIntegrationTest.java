@@ -1,5 +1,6 @@
 package com.qa.hwa.integration;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -69,5 +70,10 @@ public class CarIntegrationTest {
 		String updatedCarAsJSON = this.mapper.writeValueAsString(updatedCar);
 		
 		this.mvc.perform(put("/cars/update/1").content(updateCarAsJSON).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().json(updatedCarAsJSON));
+	}
+	
+	@Test
+	void testRemove() throws Exception {
+		this.mvc.perform(delete("/cars/remove/1")).andExpect(status().isOk()).andExpect(content().string("true"));
 	}
 }
