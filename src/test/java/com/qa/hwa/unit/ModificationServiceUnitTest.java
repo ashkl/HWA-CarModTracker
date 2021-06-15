@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -65,5 +66,24 @@ public class ModificationServiceUnitTest {
 		assertThat(this.service.getModsByCar(Id)).isEqualTo(dtos);
 		
 		Mockito.verify(this.repo, Mockito.times(1)).findByCar(new Car(Id));
+	}
+	
+	@Test
+	void testUpdate() {
+		//GIVEN
+		Integer testId = 2;
+		Modification updateMod = new Modification("Full Exhaust", "Turbo back Exhaust", "15/11/2018", 40000L, 420.00, null);
+		Modification existing = new Modification(2, null, null, null, null, null, null);
+		Modification updatedMod = new Modification(testId, "Full Exhaust", "Turbo back Exhaust", "15/11/2018", 40000L, 420.00, null);
+		
+		//WHEN
+		Mockito.when(this.repo.findById(testId)).thenReturn(Optional.of(existing));
+		Mockito.when(this.repo.save(updatedMod)).thenReturn(updatedMod);
+		
+		//THEN
+		assertThat(this.service.updateMod(testId, updateMod)).isEqualTo(this.mapper.mapToDTO(updatedMod));
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
+		Mockito.verify(this.repo, Mockito.times(1)).save(updatedMod);	
 	}
 }
