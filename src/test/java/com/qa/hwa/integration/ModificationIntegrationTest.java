@@ -1,8 +1,12 @@
 package com.qa.hwa.integration;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +45,16 @@ public class ModificationIntegrationTest {
 		
 		this.mvc.perform( post("/mods/create").content(testModAsJSON).contentType(MediaType.APPLICATION_JSON)).
 		andExpect(status().isOk()).andExpect(content().json(testSavedModAsJSON));
+	}
+	
+	@Test
+	void testFindByCar() throws Exception {
+		List<Modification> mods = new ArrayList<>();
+		mods.add(new Modification(2, "Exhaust", "Catback Exhaust", "15/11/2018", 40000L, 370.00, null));
+		mods.add(new Modification(3, "Splitter", "TRC Front Splitter", "26/01/2020", 60000L, 370.00, null));
+		
+		String testModsAsJSONArray = this.mapper.writeValueAsString(mods);
+		
+		this.mvc.perform(get("/mods/findByCar/2")).andExpect(status().isOk()).andExpect(content().json(testModsAsJSONArray));
 	}
 }
