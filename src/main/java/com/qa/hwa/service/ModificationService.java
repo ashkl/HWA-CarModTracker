@@ -58,5 +58,10 @@ public class ModificationService {
 		Modification updated = this.repo.save(existing);
 		return this.mapper.mapToDTO(updated);
 	}
+	
+	public boolean delete(int id) {
+		this.repo.deleteById(id);
+		return !this.repo.existsById(id);
+	}
 
 }
