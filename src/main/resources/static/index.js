@@ -3,6 +3,7 @@
 const output = document.getElementById("output");
 const selectCar = document.getElementById("selectCar");
 const selectUpdateCar = document.getElementById("selectUpdateCar");
+const selectDeleteCar = document.getElementById("selectDeleteCar");
 
 const getCars = async () => {
     const res = await axios.get("/cars/all/");
@@ -115,6 +116,9 @@ const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtM
 
     let updateCarOption = carOption.cloneNode(true);
     selectUpdateCar.appendChild(updateCarOption);
+
+    let deleteCarOption = carOption.cloneNode(true);
+    selectDeleteCar.appendChild(deleteCarOption);
 }
 
 getCars();
@@ -163,6 +167,15 @@ document.getElementById("updateCar").addEventListener("submit", function (event)
             this.make.focus();
         }).catch(err => console.log(err));
     console.log(this);
+});
+
+document.getElementById("deleteCar").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    axios.delete(`/cars/remove/${this.selectDeleteCar.value}`)
+        .catch(err => console.log(err));
+    console.log(this);
+    location.reload();
 });
 
 
