@@ -63,8 +63,8 @@ public class ModificationCRUDUserTest {
 		assertEquals("Splitter TRC Front Splitter 26/01/2020 60000 370", mod3);
 	}
 	
-	//@Ignore
-	@Test
+	@Ignore
+	//@Test
 	public void createMod() throws InterruptedException {
 		driver.get(URL);
 		//Thread.sleep(100000000);
@@ -109,6 +109,52 @@ public class ModificationCRUDUserTest {
 	    assertEquals("MHD S55 Remap 23/04/2021 22000 299.99", newMod);
 	}
 	
-	
+	//@Ignore
+	@Test
+	public void updateMod() throws InterruptedException {
+		driver.get(URL);
+		
+		//Thread.sleep(100000000);
+		
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
+		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownUpdateMod\"]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"selectUpdateMod\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"selectUpdateMod\"]/option[2]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateModName\"]"));
+		targ.click();
+		targ.sendKeys("Full Exhaust");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateModDesc\"]"));
+		targ.click();
+		targ.sendKeys("Turbo back exhaust");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateInstallDate\"]"));
+		targ.click();
+		targ.sendKeys("13/08/2020");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateInstallMileage\"]"));
+		targ.click();
+		targ.sendKeys("65000");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateModPrice\"]"));
+		targ.click();
+		targ.sendKeys("549.99");
+
+		targ = driver.findElement(By.xpath("//*[@id=\"updateMod\"]/div[7]/button"));
+		targ.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.stalenessOf(targ));
+			
+		targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[2]/div/div[2]/table/tbody/tr[1]"));
+	    String updatedMod = targ.getText();
+	    
+	    assertEquals("Full Exhaust Turbo back exhaust 13/08/2020 65000 549.99", updatedMod);
+	}
 
 }
