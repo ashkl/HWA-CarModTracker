@@ -184,6 +184,10 @@ public class ModificationCRUDUserTest {
 		
 		assertEquals("Splitter TRC Front Splitter 26/01/2020 60000 370", targ.getText());
 		
+		targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[2]/div/div[3]/h5"));
+
+		assertEquals("Total Spent: £370", targ.getText());
+		
 	}
 
 }
