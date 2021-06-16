@@ -1,6 +1,7 @@
 'use strict';
 
 const output = document.getElementById("output");
+const selectCar = document.getElementById("selectCar");
 
 const getCars = async () => {
     const res = await axios.get("/cars/all/");
@@ -8,7 +9,8 @@ const getCars = async () => {
     res.data.forEach(car => renderCar(car));
 }
 
-const renderCar = ({ id, make, model, year, colour, trans, fuel, bhp, boughtMileage }) => {
+const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtMileage }) => {
+
     const column = document.createElement("div");
     column.className = "col-4 mt-3";
 
@@ -20,28 +22,39 @@ const renderCar = ({ id, make, model, year, colour, trans, fuel, bhp, boughtMile
     cardImg.className = "card-img-top";
     cardImg.src = "/img/default_car.jpg";
     cardImg.alt = "Car image.";
-    card.append(cardImg);
+    card.appendChild(cardImg);
 
     const cardBody = document.createElement("div");
     cardBody.className = "card-body";
     card.appendChild(cardBody);
 
-    const makeText = document.createElement("h5");
+    const makeText = document.createElement("h4");
     makeText.className = "card-title";
     makeText.innerText = `${year} ${make} ${model}`;
     cardBody.appendChild(makeText);
 
-    const bhpText = document.createElement("p");
+    const bhpText = document.createElement("h6");
     bhpText.className = "card-text";
     bhpText.innerText = `${bhp} BHP - ${trans} - ${fuel}`;
     cardBody.appendChild(bhpText);
 
+    const extraText = document.createElement("p");
+    extraText.className = "card-text";
+    extraText.innerText = `${colour} - ${boughtMileage} Miles when bought.`;
+    cardBody.appendChild(extraText);
+
     output.appendChild(column);
+
+    const carOption = document.createElement("option");
+    carOption.value = carId;
+    carOption.innerText = `${year} ${make} ${model}`;
+
+    selectCar.appendChild(carOption);
 }
 
 getCars();
 
-document.getElementById("newForm").addEventListener("submit", function (event) {
+document.getElementById("newCar").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = {
@@ -60,5 +73,23 @@ document.getElementById("newForm").addEventListener("submit", function (event) {
             getCars();
             this.make.focus();
         }).catch(err => console.log(err));
+    console.log(this);
+});
+
+
+document.getElementById("newMod").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const data = {
+        modName: this.modName.value,
+        modDesc: this.modDesc.value,
+        installDate: this.installDate.value,
+        installMileage: this.installMileage.value,
+        modPrice: this.modPrice.value,
+        car: this.selectCar.value
+    }
+
+    axios.post("/mods/create", data)
+        .catch(err => console.log(err));
     console.log(this);
 });
