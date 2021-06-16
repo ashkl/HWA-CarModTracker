@@ -176,6 +176,46 @@
                             </form>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            UPDATE MOD
+                        </a>
+                        <div class="dropdown-menu">
+                            <form id="updateMod" class="m-3">
+                                <div>
+                                    <label for="selectUpdateModCar" class="form-label">Select Car:</label>
+
+                                    <select id=selectUpdateModCar class="form-select mb-2"
+                                        aria-label="Default select example" required>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="modName" class="form-label">Mod Name:</label>
+                                    <input id="modName" name="modName" type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="modDesc" class="form-label">Description:</label>
+                                    <input id="modDesc" name="modDesc" type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="installDate" class="form-label">Install Date:</label>
+                                    <input id="installDate" name="installDate" type="text" class="form-control mb-2"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="installMileage" class="form-label">Install Mileage:</label>
+                                    <input id="installMileage" name="installMileage" type="text"
+                                        class="form-control mb-2" required>
+                                </div>
+                                <div>
+                                    <label for="modPrice" class="form-label">Price:</label>
+                                    <input id="modPrice" name="modPrice" type="text" class="form-control mb-2" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -112,7 +112,9 @@ const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtM
     carOption.value = carId;
     carOption.innerText = `${year} ${make} ${model}`;
     selectCar.appendChild(carOption);
-    selectUpdateCar.appendChild(carOption);
+
+    let updateCarOption = carOption.cloneNode(true);
+    selectUpdateCar.appendChild(updateCarOption);
 }
 
 getCars();
@@ -135,6 +137,7 @@ document.getElementById("newCar").addEventListener("submit", function (event) {
         .then(res => {
             getCars();
             this.make.focus();
+            location.reload();
         }).catch(err => console.log(err));
     console.log(this);
 });
@@ -179,5 +182,4 @@ document.getElementById("newMod").addEventListener("submit", function (event) {
         .catch(err => console.log(err));
     console.log(this);
     location.reload();
-
 });
