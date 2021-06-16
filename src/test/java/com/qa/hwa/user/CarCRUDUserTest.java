@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,6 @@ public class CarCRUDUserTest {
 	public static void init() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chrome/chromedriver.exe");
 		driver = new ChromeDriver();
-
 	}
 	
 	@AfterAll
@@ -37,6 +37,7 @@ public class CarCRUDUserTest {
 		driver.quit();
 	}
 	
+	@Ignore
 	@Test
 	public void getCars() throws InterruptedException {
 		driver.get(URL);
@@ -57,6 +58,67 @@ public class CarCRUDUserTest {
 		assertEquals("2012 VW Polo TSI", cardTitle2);
 		assertEquals("2017 BMW M2", cardTitle3);
 		assertEquals("2017 Audi RS3", cardTitle4);
+	}
+	
+	@Ignore
+	@Test
+	public void createCar() throws InterruptedException {
+		driver.get(URL);
+	
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+	    
+		WebElement targ = driver.findElement(By.xpath("/html/body/nav/div/button"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownAddCar\"]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"make\"]"));
+		targ.click();
+		targ.sendKeys("BMW");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"model\"]"));
+		targ.click();
+		targ.sendKeys("135i");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"year\"]"));
+		targ.click();
+		targ.sendKeys("2010");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"colour\"]"));
+		targ.click();
+		targ.sendKeys("Alpine White");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"trans\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"trans\"]/option[2]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"fuel\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"fuel\"]/option[1]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"bhp\"]"));
+		targ.click();
+		targ.sendKeys("306");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"boughtMileage\"]"));
+		targ.click();
+		targ.sendKeys("108500");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"newCar\"]/button"));
+		targ.click();
+		
+	    driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
+	    targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[5]/div/div[1]/h4"));
+	    String cardTitle = targ.getText();
+	    
+	    assertEquals("2010 BMW 135i", cardTitle);
+	}
+	
+	@Test
+	public void updateCar() throws InterruptedException {
+		
 	}
 
 }
