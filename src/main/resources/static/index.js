@@ -2,6 +2,7 @@
 
 const output = document.getElementById("output");
 const selectCar = document.getElementById("selectCar");
+const selectUpdateCar = document.getElementById("selectUpdateCar");
 
 const getCars = async () => {
     const res = await axios.get("/cars/all/");
@@ -110,8 +111,8 @@ const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtM
     const carOption = document.createElement("option");
     carOption.value = carId;
     carOption.innerText = `${year} ${make} ${model}`;
-
     selectCar.appendChild(carOption);
+    selectUpdateCar.appendChild(carOption);
 }
 
 getCars();
@@ -132,6 +133,29 @@ document.getElementById("newCar").addEventListener("submit", function (event) {
 
     axios.post("/cars/create", data)
         .then(res => {
+            getCars();
+            this.make.focus();
+        }).catch(err => console.log(err));
+    console.log(this);
+});
+
+document.getElementById("updateCar").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const data = {
+        make: this.make.value,
+        model: this.model.value,
+        year: this.year.value,
+        colour: this.colour.value,
+        trans: this.trans.value,
+        fuel: this.fuel.value,
+        bhp: this.bhp.value,
+        boughtMileage: this.boughtMileage.value,
+    }
+
+    axios.put(`/cars/update/${this.selectUpdateCar.value}`, data)
+        .then(res => {
+            location.reload();
             getCars();
             this.make.focus();
         }).catch(err => console.log(err));
