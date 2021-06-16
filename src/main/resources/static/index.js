@@ -193,9 +193,12 @@ document.getElementById("deleteCar").addEventListener("submit", function (event)
     event.preventDefault();
 
     axios.delete(`/cars/remove/${this.selectDeleteCar.value}`)
-        .catch(err => console.log(err));
+        .then(res => {
+            getCars();
+            location.reload();
+        }).catch(err => console.log(err));
     console.log(this);
-    location.reload();
+
 });
 
 
@@ -212,9 +215,11 @@ document.getElementById("newMod").addEventListener("submit", function (event) {
     }
 
     axios.post("/mods/create", data)
-        .catch(err => console.log(err));
+        .then(res => {
+            getCars();
+            location.reload();
+        }).catch(err => console.log(err));
     console.log(this);
-    location.reload();
 });
 
 document.getElementById("updateMod").addEventListener("submit", function (event) {
@@ -229,16 +234,20 @@ document.getElementById("updateMod").addEventListener("submit", function (event)
     }
 
     axios.put(`/mods/update/${this.selectUpdateMod.value}`, data)
-        .catch(err => console.log(err));
+        .then(res => {
+            getCars();
+            location.reload();
+        }).catch(err => console.log(err));
     console.log(this);
-    location.reload();
 });
 
 document.getElementById("deleteMod").addEventListener("submit", function (event) {
     event.preventDefault();
 
     axios.delete(`/mods/remove/${this.selectDeleteMod.value}`)
-        .catch(err => console.log(err));
+        .then(res => {
+            getCars();
+            location.reload();
+        }).catch(err => console.log(err));
     console.log(this);
-    location.reload();
 });

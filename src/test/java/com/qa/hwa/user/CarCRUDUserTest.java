@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ public class CarCRUDUserTest {
 		driver.quit();
 	}
 	
-	//@Ignore
+
 	@Test
 	public void getCars() throws InterruptedException {
 		driver.get(URL);
@@ -65,13 +64,11 @@ public class CarCRUDUserTest {
 		assertEquals("2017 Audi RS3", cardTitle4);
 	}
 	
-	//@Ignore
+
 	@Test
 	public void createCar() throws InterruptedException {
 		driver.get(URL);
 		
-		//Thread.sleep(100000);
-	
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 	    
 		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownAddCar\"]"));
@@ -125,7 +122,7 @@ public class CarCRUDUserTest {
 	public void updateCar() throws InterruptedException {
 		driver.get(URL);
 		
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 		
 		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownUpdateCar\"]"));
 		targ.click();
@@ -176,6 +173,32 @@ public class CarCRUDUserTest {
 	    String cardText = targ.getText();
 	    
 	    assertEquals("2019 BMW M2 CS", cardText);
+	}
+	
+	@Test 
+	public void removeCar() throws InterruptedException {
+		driver.get(URL);
+		
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		
+		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownDeleteCar\"]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"selectDeleteCar\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"selectDeleteCar\"]/option[2]"));
+		targ.click();
+		
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"deleteCar\"]/div[2]/button"));
+		targ.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.stalenessOf(targ));
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[2]/div/div[1]/h4"));
+		
+		assertEquals("2017 BMW M2", targ.getText());
+		
 	}
 
 }
