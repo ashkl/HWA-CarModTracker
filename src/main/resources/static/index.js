@@ -117,6 +117,16 @@ const renderPage = ({ carId, make, model, year, colour, trans, fuel, bhp, bought
         tr2.appendChild(tdPrice);
     });
 
+    const cardFooter = document.createElement("div");
+    cardFooter.className = "card-footer";
+    card.appendChild(cardFooter);
+
+    const sum = mods.map(element => element.modPrice).reduce((a, b) => a + b, 0);
+
+    const totalSpent = document.createElement("h5");
+    totalSpent.innerText = `Total Spent: £${sum}`;
+    cardFooter.appendChild(totalSpent);
+
     output.appendChild(column);
 
     const carOption = document.createElement("option");
