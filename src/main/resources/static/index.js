@@ -9,7 +9,7 @@ const getCars = async () => {
     res.data.forEach(car => renderCar(car));
 }
 
-const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtMileage }) => {
+const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtMileage, mods }) => {
 
     const column = document.createElement("div");
     column.className = "col-4 mt-3";
@@ -42,6 +42,68 @@ const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtM
     extraText.className = "card-text";
     extraText.innerText = `${colour} - ${boughtMileage} Miles when bought.`;
     cardBody.appendChild(extraText);
+
+    const tableResp = document.createElement("div");
+    tableResp.className = "table-responsive";
+    card.appendChild(tableResp);
+
+    const cardTable = document.createElement("table");
+    cardTable.className = "card-table table";
+    tableResp.appendChild(cardTable);
+
+    const tHead = document.createElement("thead");
+    cardTable.appendChild(tHead);
+
+    const tr = document.createElement("tr");
+    tHead.appendChild(tr);
+
+    const thModName = document.createElement("th");
+    thModName.innerText = "Name";
+    tr.appendChild(thModName);
+
+    const thModDesc = document.createElement("th");
+    thModDesc.innerText = "Desc";
+    tr.appendChild(thModDesc);
+
+    const thInstallDate = document.createElement("th");
+    thInstallDate.innerText = "Install Date";
+    tr.appendChild(thInstallDate);
+
+    const thInstallMileage = document.createElement("th");
+    thInstallMileage.innerText = "Mileage";
+    tr.appendChild(thInstallMileage);
+
+    const thModPrice = document.createElement("th");
+    thModPrice.innerText = "Price";
+    tr.appendChild(thModPrice);
+
+    const tBody = document.createElement("tbody");
+    cardTable.appendChild(tBody);
+
+    mods.forEach((element) => {
+        const tr2 = document.createElement("tr");
+        tBody.appendChild(tr2);
+
+        const tdName = document.createElement("td");
+        tdName.innerText = element.modName
+        tr2.appendChild(tdName);
+
+        const tdDesc = document.createElement("td");
+        tdDesc.innerText = element.modDesc
+        tr2.appendChild(tdDesc);
+
+        const tdInstallDate = document.createElement("td");
+        tdInstallDate.innerText = element.installDate
+        tr2.appendChild(tdInstallDate);
+
+        const tdInstallMileage = document.createElement("td");
+        tdInstallMileage.innerText = element.installMileage
+        tr2.appendChild(tdInstallMileage);
+
+        const tdPrice = document.createElement("td");
+        tdPrice.innerText = element.modPrice
+        tr2.appendChild(tdPrice);
+    });
 
     output.appendChild(column);
 
@@ -92,4 +154,6 @@ document.getElementById("newMod").addEventListener("submit", function (event) {
     axios.post("/mods/create", data)
         .catch(err => console.log(err));
     console.log(this);
+    location.reload();
+
 });
