@@ -3,6 +3,7 @@
 const output = document.getElementById("output");
 const selectCar = document.getElementById("selectCar");
 const selectUpdateCar = document.getElementById("selectUpdateCar");
+const selectUpdateMod = document.getElementById("selectUpdateMod");
 const selectDeleteCar = document.getElementById("selectDeleteCar");
 const selectDeleteMod = document.getElementById("selectDeleteMod");
 
@@ -126,6 +127,9 @@ const renderPage = ({ carId, make, model, year, colour, trans, fuel, bhp, bought
         modOption.value = element.modId;
         modOption.innerText = `${year} ${make} ${model} - ${element.modName} ${element.installDate}`;
         selectDeleteMod.appendChild(modOption);
+
+        let updateModOption = modOption.cloneNode(true);
+        selectUpdateMod.appendChild(updateModOption);
     });
 }
 
@@ -200,6 +204,23 @@ document.getElementById("newMod").addEventListener("submit", function (event) {
     }
 
     axios.post("/mods/create", data)
+        .catch(err => console.log(err));
+    console.log(this);
+    location.reload();
+});
+
+document.getElementById("updateMod").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const data = {
+        modName: this.modName.value,
+        modDesc: this.modDesc.value,
+        installDate: this.installDate.value,
+        installMileage: this.installMileage.value,
+        modPrice: this.modPrice.value,
+    }
+
+    axios.put(`/mods/update/${this.selectUpdateMod.value}`, data)
         .catch(err => console.log(err));
     console.log(this);
     location.reload();
