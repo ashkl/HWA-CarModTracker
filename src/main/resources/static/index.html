@@ -22,39 +22,40 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAddCar" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ADD CAR
                         </a>
                         <div class="dropdown-menu">
                             <form id="newCar" class="m-3">
                                 <div class="mb-3">
-                                    <label for="make" class="form-label">Make:</label>
-                                    <input id="make" name="make" type="text" class="form-control" required>
+                                    <label for="addMake" class="form-label">Make:</label>
+                                    <input id="addMake" name="addMake" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="model" class="form-label">Model:</label>
-                                    <input id="model" name="model" type="text" class="form-control" required>
+                                    <label for="addModel" class="form-label">Model:</label>
+                                    <input id="addModel" name="addModel" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="year" class="form-label">Year:</label>
-                                    <input id="year" name="year" type="text" class="form-control mb-2" required>
+                                    <label for="addYear" class="form-label">Year:</label>
+                                    <input id="addYear" name="addYear" type="text" class="form-control mb-2" required>
                                 </div>
                                 <div>
-                                    <label for="colour" class="form-label">Colour:</label>
-                                    <input id="colour" name="colour" type="text" class="form-control mb-2" required>
+                                    <label for="addColour" class="form-label">Colour:</label>
+                                    <input id="addColour" name="addColour" type="text" class="form-control mb-2"
+                                        required>
                                 </div>
                                 <div>
-                                    <label for="trans" class="form-label">Transmission:</label>
-                                    <select id=trans class="form-select mb-2" aria-label="Default select example"
+                                    <label for="addTrans" class="form-label">Transmission:</label>
+                                    <select id=addTrans class="form-select mb-2" aria-label="Default select example"
                                         required>
                                         <option value="Manual">Manual</option>
                                         <option value="Automatic">Automatic</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="fuel" class="form-label">Fuel:</label>
-                                    <select id=fuel class="form-select mb-2" aria-label="Default select example"
+                                    <label for="addFuel" class="form-label">Fuel:</label>
+                                    <select id=addFuel class="form-select mb-2" aria-label="Default select example"
                                         required>
                                         <option id=fuel name=fuel value="Petrol">Petrol</option>
                                         <option id=fuel name=fuel value="Diesel">Diesel</option>
@@ -63,20 +64,22 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="bhp" class="form-label">Power (BHP):</label>
-                                    <input id="bhp" name="bhp" type="text" class="form-control mb-2" required>
+                                    <label for="addBhp" class="form-label">Power (BHP):</label>
+                                    <input id="addBhp" name="addBhp" type="text" class="form-control mb-2" required>
                                 </div>
                                 <div>
-                                    <label for="boughtMileage" class="form-label">Mileage when bought:</label>
-                                    <input id="boughtMileage" name="boughtMileage" type="text" class="form-control mb-2"
-                                        required>
+                                    <label for="addBoughtMileage" class="form-label">Mileage when bought:</label>
+                                    <input id="addBoughtMileage" name="addBoughtMileage" type="text"
+                                        class="form-control mb-2" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAddMod" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ADD MOD
                         </a>
@@ -89,33 +92,36 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="modName" class="form-label">Mod Name:</label>
-                                    <input id="modName" name="modName" type="text" class="form-control" required>
+                                    <label for="addModName" class="form-label">Mod Name:</label>
+                                    <input id="addModName" name="addModName" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="modDesc" class="form-label">Description:</label>
-                                    <input id="modDesc" name="modDesc" type="text" class="form-control" required>
+                                    <label for="addModDesc" class="form-label">Description:</label>
+                                    <input id="addModDesc" name="addModDesc" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="installDate" class="form-label">Install Date:</label>
-                                    <input id="installDate" name="installDate" type="text" class="form-control mb-2"
-                                        required>
-                                </div>
-                                <div>
-                                    <label for="installMileage" class="form-label">Install Mileage:</label>
-                                    <input id="installMileage" name="installMileage" type="text"
+                                    <label for="addInstallDate" class="form-label">Install Date:</label>
+                                    <input id="addInstallDate" name="addInstallDate" type="text"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div>
-                                    <label for="modPrice" class="form-label">Price:</label>
-                                    <input id="modPrice" name="modPrice" type="text" class="form-control mb-2" required>
+                                    <label for="addInstallMileage" class="form-label">Install Mileage:</label>
+                                    <input id="addInstallMileage" name="addInstallMileage" type="text"
+                                        class="form-control mb-2" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div>
+                                    <label for="addModPrice" class="form-label">Price:</label>
+                                    <input id="addModPrice" name="addModPrice" type="text" class="form-control mb-2"
+                                        required>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUpdateCar" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             UPDATE CAR
                         </a>
@@ -128,32 +134,35 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="make" class="form-label">Make:</label>
-                                    <input id="make" name="make" type="text" class="form-control" required>
+                                    <label for="updateMake" class="form-label">Make:</label>
+                                    <input id="updateMake" name="updateMake" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="model" class="form-label">Model:</label>
-                                    <input id="model" name="model" type="text" class="form-control" required>
+                                    <label for="updateModel" class="form-label">Model:</label>
+                                    <input id="updateModel" name="updateModel" type="text" class="form-control"
+                                        required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="year" class="form-label">Year:</label>
-                                    <input id="year" name="year" type="text" class="form-control mb-2" required>
+                                    <label for="updateYear" class="form-label">Year:</label>
+                                    <input id="updateYear" name="updateYear" type="text" class="form-control mb-2"
+                                        required>
                                 </div>
                                 <div>
-                                    <label for="colour" class="form-label">Colour:</label>
-                                    <input id="colour" name="colour" type="text" class="form-control mb-2" required>
+                                    <label for="updateColour" class="form-label">Colour:</label>
+                                    <input id="updateColour" name="updateColour" type="text" class="form-control mb-2"
+                                        required>
                                 </div>
                                 <div>
-                                    <label for="trans" class="form-label">Transmission:</label>
-                                    <select id=trans class="form-select mb-2" aria-label="Default select example"
+                                    <label for="updateTrans" class="form-label">Transmission:</label>
+                                    <select id=updateTrans class="form-select mb-2" aria-label="Default select example"
                                         required>
                                         <option value="Manual">Manual</option>
                                         <option value="Automatic">Automatic</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="fuel" class="form-label">Fuel:</label>
-                                    <select id=fuel class="form-select mb-2" aria-label="Default select example"
+                                    <label for="updateFuel" class="form-label">Fuel:</label>
+                                    <select id=updateFuel class="form-select mb-2" aria-label="Default select example"
                                         required>
                                         <option id=fuel name=fuel value="Petrol">Petrol</option>
                                         <option id=fuel name=fuel value="Diesel">Diesel</option>
@@ -162,20 +171,23 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="bhp" class="form-label">Power (BHP):</label>
-                                    <input id="bhp" name="bhp" type="text" class="form-control mb-2" required>
-                                </div>
-                                <div>
-                                    <label for="boughtMileage" class="form-label">Mileage when bought:</label>
-                                    <input id="boughtMileage" name="boughtMileage" type="text" class="form-control mb-2"
+                                    <label for="updateBhp" class="form-label">Power (BHP):</label>
+                                    <input id="updateBhp" name="updateBhp" type="text" class="form-control mb-2"
                                         required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div>
+                                    <label for="updateBoughtMileage" class="form-label">Mileage when bought:</label>
+                                    <input id="updateBoughtMileage" name="updateBoughtMileage" type="text"
+                                        class="form-control mb-2" required>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUpdateMod" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             UPDATE MOD
                         </a>
@@ -188,33 +200,38 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="modName" class="form-label">Mod Name:</label>
-                                    <input id="modName" name="modName" type="text" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="modDesc" class="form-label">Description:</label>
-                                    <input id="modDesc" name="modDesc" type="text" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="installDate" class="form-label">Install Date:</label>
-                                    <input id="installDate" name="installDate" type="text" class="form-control mb-2"
+                                    <label for="updateModName" class="form-label">Mod Name:</label>
+                                    <input id="updateModName" name="updateModName" type="text" class="form-control"
                                         required>
                                 </div>
-                                <div>
-                                    <label for="installMileage" class="form-label">Install Mileage:</label>
-                                    <input id="installMileage" name="installMileage" type="text"
+                                <div class="mb-3">
+                                    <label for="updateModDesc" class="form-label">Description:</label>
+                                    <input id="updateModDesc" name="updateModDesc" type="text" class="form-control"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateInstallDate" class="form-label">Install Date:</label>
+                                    <input id="updateInstallDate" name="updateInstallDate" type="text"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div>
-                                    <label for="modPrice" class="form-label">Price:</label>
-                                    <input id="modPrice" name="modPrice" type="text" class="form-control mb-2" required>
+                                    <label for="updateInstallMileage" class="form-label">Install Mileage:</label>
+                                    <input id="updateInstallMileage" name="updateInstallMileage" type="text"
+                                        class="form-control mb-2" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div>
+                                    <label for="updateModPrice" class="form-label">Price:</label>
+                                    <input id="updateModPrice" name="updateModPrice" type="text"
+                                        class="form-control mb-2" required>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDeleteCar" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             DELETE CAR
                         </a>
@@ -226,12 +243,14 @@
                                         aria-label="Default select example" required>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </div>
                             </form>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDeleteMod" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             DELETE MOD
                         </a>
@@ -243,7 +262,9 @@
                                         aria-label="Default select example" required>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </div>
                             </form>
                         </div>
                     </li>
