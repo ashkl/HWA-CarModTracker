@@ -42,8 +42,8 @@ public class ModificationCRUDUserTest {
 		driver.quit();
 	}
 	
-	@Ignore
-	//@Test
+	//@Ignore
+	@Test
 	public void getMods() throws InterruptedException {
 		driver.get(URL);
 		//Thread.sleep(10000000);
@@ -63,8 +63,8 @@ public class ModificationCRUDUserTest {
 		assertEquals("Splitter TRC Front Splitter 26/01/2020 60000 370", mod3);
 	}
 	
-	@Ignore
-	//@Test
+	//@Ignore
+	@Test
 	public void createMod() throws InterruptedException {
 		driver.get(URL);
 		//Thread.sleep(100000000);
@@ -155,6 +155,35 @@ public class ModificationCRUDUserTest {
 	    String updatedMod = targ.getText();
 	    
 	    assertEquals("Full Exhaust Turbo back exhaust 13/08/2020 65000 549.99", updatedMod);
+	}
+	
+	//@Ignore
+	@Test 
+	public void removeMod() throws InterruptedException {
+		driver.get(URL);
+		
+		//Thread.sleep(1000000);
+		
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		
+		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownDeleteMod\"]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"selectDeleteMod\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"selectDeleteMod\"]/option[2]"));
+		targ.click();
+		
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"deleteMod\"]/div[2]/button"));
+		targ.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.stalenessOf(targ));
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[2]/div/div[2]/table/tbody/tr"));
+		
+		assertEquals("Splitter TRC Front Splitter 26/01/2020 60000 370", targ.getText());
+		
 	}
 
 }
