@@ -4,14 +4,15 @@ const output = document.getElementById("output");
 const selectCar = document.getElementById("selectCar");
 const selectUpdateCar = document.getElementById("selectUpdateCar");
 const selectDeleteCar = document.getElementById("selectDeleteCar");
+const selectDeleteMod = document.getElementById("selectDeleteMod");
 
 const getCars = async () => {
     const res = await axios.get("/cars/all/");
     output.innerHTML = "";
-    res.data.forEach(car => renderCar(car));
+    res.data.forEach(car => renderPage(car));
 }
 
-const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtMileage, mods }) => {
+const renderPage = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtMileage, mods }) => {
 
     const column = document.createElement("div");
     column.className = "col-4 mt-3";
@@ -119,6 +120,13 @@ const renderCar = ({ carId, make, model, year, colour, trans, fuel, bhp, boughtM
 
     let deleteCarOption = carOption.cloneNode(true);
     selectDeleteCar.appendChild(deleteCarOption);
+
+    mods.forEach((element) => {
+        const modOption = document.createElement("option");
+        modOption.value = element.modId;
+        modOption.innerText = `${year} ${make} ${model} - ${element.modName} ${element.installDate}`;
+        selectDeleteMod.appendChild(modOption);
+    });
 }
 
 getCars();
@@ -192,6 +200,15 @@ document.getElementById("newMod").addEventListener("submit", function (event) {
     }
 
     axios.post("/mods/create", data)
+        .catch(err => console.log(err));
+    console.log(this);
+    location.reload();
+});
+
+document.getElementById("deleteMod").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    axios.delete(`/mods/remove/${this.selectDeleteMod.value}`)
         .catch(err => console.log(err));
     console.log(this);
     location.reload();
