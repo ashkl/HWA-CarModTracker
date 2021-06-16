@@ -147,20 +147,20 @@ document.getElementById("newCar").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = {
-        make: this.make.value,
-        model: this.model.value,
-        year: this.year.value,
-        colour: this.colour.value,
-        trans: this.trans.value,
-        fuel: this.fuel.value,
-        bhp: this.bhp.value,
-        boughtMileage: this.boughtMileage.value
+        make: this.addMake.value,
+        model: this.addModel.value,
+        year: this.addYear.value,
+        colour: this.addColour.value,
+        trans: this.addTrans.value,
+        fuel: this.addFuel.value,
+        bhp: this.addBhp.value,
+        boughtMileage: this.addBoughtMileage.value
     }
 
     axios.post("/cars/create", data)
         .then(res => {
             getCars();
-            this.make.focus();
+            this.addMake.focus();
             location.reload();
         }).catch(err => console.log(err));
     console.log(this);
@@ -170,14 +170,14 @@ document.getElementById("updateCar").addEventListener("submit", function (event)
     event.preventDefault();
 
     const data = {
-        make: this.make.value,
-        model: this.model.value,
-        year: this.year.value,
-        colour: this.colour.value,
-        trans: this.trans.value,
-        fuel: this.fuel.value,
-        bhp: this.bhp.value,
-        boughtMileage: this.boughtMileage.value,
+        make: this.updateMake.value,
+        model: this.updateModel.value,
+        year: this.updateYear.value,
+        colour: this.updateColour.value,
+        trans: this.updateTrans.value,
+        fuel: this.updateFuel.value,
+        bhp: this.updateBhp.value,
+        boughtMileage: this.updateBoughtMileage.value,
     }
 
     axios.put(`/cars/update/${this.selectUpdateCar.value}`, data)
@@ -203,11 +203,11 @@ document.getElementById("newMod").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = {
-        modName: this.modName.value,
-        modDesc: this.modDesc.value,
-        installDate: this.installDate.value,
-        installMileage: this.installMileage.value,
-        modPrice: this.modPrice.value,
+        modName: this.addModName.value,
+        modDesc: this.addModDesc.value,
+        installDate: this.addInstallDate.value,
+        installMileage: this.addInstallMileage.value,
+        modPrice: this.addModPrice.value,
         car: this.selectCar.value
     }
 
@@ -221,11 +221,11 @@ document.getElementById("updateMod").addEventListener("submit", function (event)
     event.preventDefault();
 
     const data = {
-        modName: this.modName.value,
-        modDesc: this.modDesc.value,
-        installDate: this.installDate.value,
-        installMileage: this.installMileage.value,
-        modPrice: this.modPrice.value,
+        modName: this.updateModName.value,
+        modDesc: this.updateModDesc.value,
+        installDate: this.updateInstallDate.value,
+        installMileage: this.updateInstallMileage.value,
+        modPrice: this.updateModPrice.value,
     }
 
     axios.put(`/mods/update/${this.selectUpdateMod.value}`, data)

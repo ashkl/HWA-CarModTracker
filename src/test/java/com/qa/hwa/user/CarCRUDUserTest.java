@@ -12,6 +12,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
@@ -29,7 +32,9 @@ public class CarCRUDUserTest {
 	@BeforeAll
 	public static void init() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chrome/chromedriver.exe");
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--start-maximized");
+		driver = new ChromeDriver( options );
 	}
 	
 	@AfterAll
@@ -37,7 +42,7 @@ public class CarCRUDUserTest {
 		driver.quit();
 	}
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void getCars() throws InterruptedException {
 		driver.get(URL);
@@ -60,55 +65,55 @@ public class CarCRUDUserTest {
 		assertEquals("2017 Audi RS3", cardTitle4);
 	}
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void createCar() throws InterruptedException {
 		driver.get(URL);
+		
+		//Thread.sleep(100000);
 	
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 	    
-		WebElement targ = driver.findElement(By.xpath("/html/body/nav/div/button"));
+		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownAddCar\"]"));
 		targ.click();
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownAddCar\"]"));
-		targ.click();
-		
-		targ = driver.findElement(By.xpath("//*[@id=\"make\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addMake\"]"));
 		targ.click();
 		targ.sendKeys("BMW");
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"model\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addModel\"]"));
 		targ.click();
 		targ.sendKeys("135i");
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"year\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addYear\"]"));
 		targ.click();
 		targ.sendKeys("2010");
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"colour\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addColour\"]"));
 		targ.click();
 		targ.sendKeys("Alpine White");
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"trans\"]"));
-		targ = driver.findElement(By.xpath("//*[@id=\"trans\"]/option[2]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addTrans\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addTrans\"]/option[2]"));
 		targ.click();
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"fuel\"]"));
-		targ = driver.findElement(By.xpath("//*[@id=\"fuel\"]/option[1]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addFuel\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addFuel\"]/option[1]"));
 		targ.click();
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"bhp\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addBhp\"]"));
 		targ.click();
 		targ.sendKeys("306");
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"boughtMileage\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"addBoughtMileage\"]"));
 		targ.click();
 		targ.sendKeys("108500");
 		
-		targ = driver.findElement(By.xpath("//*[@id=\"newCar\"]/button"));
+		targ = driver.findElement(By.xpath("//*[@id=\"newCar\"]/div[9]/button"));
 		targ.click();
 		
-	    driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.stalenessOf(targ));
 
 	    targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[5]/div/div[1]/h4"));
 	    String cardTitle = targ.getText();
@@ -118,7 +123,59 @@ public class CarCRUDUserTest {
 	
 	@Test
 	public void updateCar() throws InterruptedException {
+		driver.get(URL);
 		
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		
+		WebElement targ = driver.findElement(By.xpath("//*[@id=\"navbarDropdownUpdateCar\"]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"selectUpdateCar\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"selectUpdateCar\"]/option[3]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateMake\"]"));
+		targ.click();
+		targ.sendKeys("BMW");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateModel\"]"));
+		targ.click();
+		targ.sendKeys("M2 CS");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateYear\"]"));
+		targ.click();
+		targ.sendKeys("2019");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateColour\"]"));
+		targ.click();
+		targ.sendKeys("Hockenheim Silver");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateTrans\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"updateTrans\"]/option[1]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateFuel\"]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"updateFuel\"]/option[1]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateBhp\"]"));
+		targ.click();
+		targ.sendKeys("444");
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateBoughtMileage\"]"));
+		targ.click();
+		targ.sendKeys("5000");
+
+		targ = driver.findElement(By.xpath("//*[@id=\"updateCar\"]/div[10]/button"));
+		targ.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.stalenessOf(targ));
+		
+	    targ = driver.findElement(By.xpath("//*[@id=\"output\"]/div[3]/div/div[1]/h4"));
+	    String cardText = targ.getText();
+	    
+	    assertEquals("2019 BMW M2 CS", cardText);
 	}
 
 }
