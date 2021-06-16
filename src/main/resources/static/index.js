@@ -85,6 +85,14 @@ const renderPage = ({ carId, make, model, year, colour, trans, fuel, bhp, bought
     cardTable.appendChild(tBody);
 
     mods.forEach((element) => {
+        const modOption = document.createElement("option");
+        modOption.value = element.modId;
+        modOption.innerText = `${year} ${make} ${model} - ${element.modName} ${element.installDate}`;
+        selectDeleteMod.appendChild(modOption);
+
+        let updateModOption = modOption.cloneNode(true);
+        selectUpdateMod.appendChild(updateModOption);
+
         const tr2 = document.createElement("tr");
         tBody.appendChild(tr2);
 
@@ -121,16 +129,6 @@ const renderPage = ({ carId, make, model, year, colour, trans, fuel, bhp, bought
 
     let deleteCarOption = carOption.cloneNode(true);
     selectDeleteCar.appendChild(deleteCarOption);
-
-    mods.forEach((element) => {
-        const modOption = document.createElement("option");
-        modOption.value = element.modId;
-        modOption.innerText = `${year} ${make} ${model} - ${element.modName} ${element.installDate}`;
-        selectDeleteMod.appendChild(modOption);
-
-        let updateModOption = modOption.cloneNode(true);
-        selectUpdateMod.appendChild(updateModOption);
-    });
 }
 
 getCars();
