@@ -40,7 +40,7 @@ public class ModificationServiceUnitTest {
 		Modification testSavedMod = new Modification(1, "Spoiler", "M4 Style Spoiler", "15/06/2021", 135000L, 54.99, null);
 		
 		//WHEN
-		Mockito.when(this.repo.save(testMod)).thenReturn(testMod);
+		Mockito.when(this.repo.save(testMod)).thenReturn(testSavedMod);
 		
 		//THEN
 		assertThat(this.service.createMod(testMod)).isEqualTo(this.mapper.mapToDTO(testSavedMod));
@@ -78,7 +78,7 @@ public class ModificationServiceUnitTest {
 		
 		//WHEN
 		Mockito.when(this.repo.findById(testId)).thenReturn(Optional.of(existing));
-		Mockito.when(this.repo.save(updatedMod)).thenReturn(updatedMod);
+		Mockito.when(this.repo.save(updateMod)).thenReturn(updatedMod);
 		
 		//THEN
 		assertThat(this.service.updateMod(testId, updateMod)).isEqualTo(this.mapper.mapToDTO(updatedMod));
