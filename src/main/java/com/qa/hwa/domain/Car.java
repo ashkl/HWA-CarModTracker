@@ -109,28 +109,10 @@ public class Car {
 		return mods;
 	}
 
-	public void setMods(List<Modification> mods) {
-		this.mods = mods;
-	}
-
 	public Car(Integer carId, String make, String model, Integer year, String colour, String trans, String fuel,
 			Integer bhp, Long boughtMileage, List<Modification> mods) {
 		super();
 		this.carId = carId;
-		this.make = make;
-		this.model = model;
-		this.year = year;
-		this.colour = colour;
-		this.trans = trans;
-		this.fuel = fuel;
-		this.bhp = bhp;
-		this.boughtMileage = boughtMileage;
-		this.mods = mods;
-	}
-
-	public Car(String make, String model, Integer year, String colour, String trans, String fuel, Integer bhp,
-			Long boughtMileage, List<Modification> mods) {
-		super();
 		this.make = make;
 		this.model = model;
 		this.year = year;
@@ -168,15 +150,6 @@ public class Car {
 		this.bhp = bhp;
 		this.boughtMileage = boughtMileage;
 	}
-
-	@Override
-	public String toString() {
-		return "Car [carId=" + carId + ", make=" + make + ", model=" + model + ", year=" + year + ", colour=" + colour
-				+ ", trans=" + trans + ", fuel=" + fuel + ", bhp=" + bhp + ", boughtMileage=" + boughtMileage
-				+ ", mods=" + mods + "]";
-	}
-	
-	
 
 	public Car(Integer carId) {
 		super();

@@ -92,15 +92,6 @@ public class Modification {
 		this.modPrice = modPrice;
 		this.car = car;
 	}
-
-	public Modification(String modName, String modDesc, String installDate, Long installMileage, Double modPrice) {
-		super();
-		this.modName = modName;
-		this.modDesc = modDesc;
-		this.installDate = installDate;
-		this.installMileage = installMileage;
-		this.modPrice = modPrice;
-	}
 	
 	public Modification(String modName, String modDesc, String installDate, Long installMileage, Double modPrice,
 			Car car) {
@@ -111,12 +102,6 @@ public class Modification {
 		this.installMileage = installMileage;
 		this.modPrice = modPrice;
 		this.car = car;
-	}
-
-	@Override
-	public String toString() {
-		return "Modifications [modId=" + modId + ", modName=" + modName + ", modDesc=" + modDesc + ", installDate="
-				+ installDate + ", installMileage=" + installMileage + ", modPrice=" + modPrice + ", car=" + car + "]";
 	}
 
 	@Override

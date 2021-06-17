@@ -97,40 +97,6 @@ public class CarDTO {
 		this.mods = mods;
 	}
 
-	public CarDTO(Integer carId, String make, String model, Integer year, String colour, String trans, String fuel,
-			Integer bhp, Long boughtMileage, List<ModificationDTO> mods) {
-		super();
-		this.carId = carId;
-		this.make = make;
-		this.model = model;
-		this.year = year;
-		this.colour = colour;
-		this.trans = trans;
-		this.fuel = fuel;
-		this.bhp = bhp;
-		this.boughtMileage = boughtMileage;
-		this.mods = mods;
-	}
-
-	public CarDTO(String make, String model, Integer year, String colour, String trans, String fuel, Integer bhp,
-			Long boughtMileage) {
-		super();
-		this.make = make;
-		this.model = model;
-		this.year = year;
-		this.colour = colour;
-		this.trans = trans;
-		this.fuel = fuel;
-		this.bhp = bhp;
-		this.boughtMileage = boughtMileage;
-	}
-
-	public CarDTO(Integer carId, List<ModificationDTO> mods) {
-		super();
-		this.carId = carId;
-		this.mods = mods;
-	}
-
 	public CarDTO() {
 		// TODO Auto-generated constructor stub
 	}
