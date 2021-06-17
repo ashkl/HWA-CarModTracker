@@ -66,42 +66,6 @@ public class ModificationDTO {
 		return car;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
-	}
-
-	public ModificationDTO(Integer modId, String modName, String modDesc, String installDate, Long installMileage,
-			Double modPrice, Car car) {
-		super();
-		this.modId = modId;
-		this.modName = modName;
-		this.modDesc = modDesc;
-		this.installDate = installDate;
-		this.installMileage = installMileage;
-		this.modPrice = modPrice;
-		this.car = car;
-	}
-
-	public ModificationDTO(String modName, String modDesc, String installDate, Long installMileage, Double modPrice) {
-		super();
-		this.modName = modName;
-		this.modDesc = modDesc;
-		this.installDate = installDate;
-		this.installMileage = installMileage;
-		this.modPrice = modPrice;
-	}
-	
-	public ModificationDTO(String modName, String modDesc, String installDate, Long installMileage, Double modPrice,
-			Car car) {
-		super();
-		this.modName = modName;
-		this.modDesc = modDesc;
-		this.installDate = installDate;
-		this.installMileage = installMileage;
-		this.modPrice = modPrice;
-		this.car = car;
-	}
-
 	public ModificationDTO() {
 		// TODO Auto-generated constructor stub
 	}
