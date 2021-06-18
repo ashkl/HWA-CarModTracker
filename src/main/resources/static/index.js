@@ -160,7 +160,6 @@ document.getElementById("newCar").addEventListener("submit", function (event) {
     axios.post("/cars/create", data)
         .then(res => {
             getCars();
-            this.addMake.focus();
             location.reload();
         }).catch(err => console.log(err));
     console.log(this);
@@ -182,9 +181,8 @@ document.getElementById("updateCar").addEventListener("submit", function (event)
 
     axios.put(`/cars/update/${this.selectUpdateCar.value}`, data)
         .then(res => {
-            location.reload();
             getCars();
-            this.make.focus();
+            location.reload();
         }).catch(err => console.log(err));
     console.log(this);
 });

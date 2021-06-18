@@ -38,7 +38,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="addYear" class="form-label">Year:</label>
-                                    <input id="addYear" name="addYear" type="text" class="form-control mb-2" required>
+                                    <input id="addYear" name="addYear" type="number" min="1900" step="1"
+                                        class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="addColour" class="form-label">Colour:</label>
@@ -47,7 +48,7 @@
                                 </div>
                                 <div>
                                     <label for="addTrans" class="form-label">Transmission:</label>
-                                    <select id=addTrans class="form-select mb-2" aria-label="Default select example"
+                                    <select id=addTrans class="form-select mb-2" aria-label="Select Transmission"
                                         required>
                                         <option value="Manual">Manual</option>
                                         <option value="Automatic">Automatic</option>
@@ -55,8 +56,7 @@
                                 </div>
                                 <div>
                                     <label for="addFuel" class="form-label">Fuel:</label>
-                                    <select id=addFuel class="form-select mb-2" aria-label="Default select example"
-                                        required>
+                                    <select id=addFuel class="form-select mb-2" aria-label="Select Fuel" required>
                                         <option id=fuel name=fuel value="Petrol">Petrol</option>
                                         <option id=fuel name=fuel value="Diesel">Diesel</option>
                                         <option id=fuel name=fuel value="Electric">Electric</option>
@@ -65,11 +65,12 @@
                                 </div>
                                 <div>
                                     <label for="addBhp" class="form-label">Power (BHP):</label>
-                                    <input id="addBhp" name="addBhp" type="text" class="form-control mb-2" required>
+                                    <input id="addBhp" name="addBhp" type="number" min="0" class="form-control mb-2"
+                                        required>
                                 </div>
                                 <div>
                                     <label for="addBoughtMileage" class="form-label">Mileage when bought:</label>
-                                    <input id="addBoughtMileage" name="addBoughtMileage" type="text"
+                                    <input id="addBoughtMileage" name="addBoughtMileage" type="number" min="0"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div class="d-grid gap-2">
@@ -87,7 +88,7 @@
                             <form id="newMod" class="m-3">
                                 <div>
                                     <label for="selectCar" class="form-label">Select Car:</label>
-                                    <select id=selectCar class="form-select mb-2" aria-label="Default select example"
+                                    <select id=selectCar class="form-select mb-2" aria-label="Select car to add mod"
                                         required>
                                     </select>
                                 </div>
@@ -101,18 +102,18 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="addInstallDate" class="form-label">Install Date:</label>
-                                    <input id="addInstallDate" name="addInstallDate" type="text"
+                                    <input id="addInstallDate" name="addInstallDate" type="date"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="addInstallMileage" class="form-label">Install Mileage:</label>
-                                    <input id="addInstallMileage" name="addInstallMileage" type="text"
+                                    <input id="addInstallMileage" name="addInstallMileage" type="number" min="0"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="addModPrice" class="form-label">Price:</label>
-                                    <input id="addModPrice" name="addModPrice" type="text" class="form-control mb-2"
-                                        required>
+                                    <input id="addModPrice" name="addModPrice" type="number" min="0" step="0.01"
+                                        class="form-control mb-2" required>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -130,7 +131,7 @@
                                 <div>
                                     <label for="selectUpdateCar" class="form-label">Select Car to update:</label>
                                     <select id=selectUpdateCar class="form-select mb-2"
-                                        aria-label="Default select example" required>
+                                        aria-label="Select car to update" required>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -144,8 +145,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="updateYear" class="form-label">Year:</label>
-                                    <input id="updateYear" name="updateYear" type="text" class="form-control mb-2"
-                                        required>
+                                    <input id="updateYear" name="updateYear" type="number" min="1900"
+                                        class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="updateColour" class="form-label">Colour:</label>
@@ -154,7 +155,7 @@
                                 </div>
                                 <div>
                                     <label for="updateTrans" class="form-label">Transmission:</label>
-                                    <select id=updateTrans class="form-select mb-2" aria-label="Default select example"
+                                    <select id=updateTrans class="form-select mb-2" aria-label="Select Transmission"
                                         required>
                                         <option value="Manual">Manual</option>
                                         <option value="Automatic">Automatic</option>
@@ -162,8 +163,7 @@
                                 </div>
                                 <div>
                                     <label for="updateFuel" class="form-label">Fuel:</label>
-                                    <select id=updateFuel class="form-select mb-2" aria-label="Default select example"
-                                        required>
+                                    <select id=updateFuel class="form-select mb-2" aria-label="Select Fuel" required>
                                         <option id=fuel name=fuel value="Petrol">Petrol</option>
                                         <option id=fuel name=fuel value="Diesel">Diesel</option>
                                         <option id=fuel name=fuel value="Electric">Electric</option>
@@ -172,12 +172,12 @@
                                 </div>
                                 <div>
                                     <label for="updateBhp" class="form-label">Power (BHP):</label>
-                                    <input id="updateBhp" name="updateBhp" type="text" class="form-control mb-2"
-                                        required>
+                                    <input id="updateBhp" name="updateBhp" type="number" min="0"
+                                        class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="updateBoughtMileage" class="form-label">Mileage when bought:</label>
-                                    <input id="updateBoughtMileage" name="updateBoughtMileage" type="text"
+                                    <input id="updateBoughtMileage" name="updateBoughtMileage" type="number" min="0"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div class="d-grid gap-2">
@@ -196,7 +196,7 @@
                                 <div>
                                     <label for="selectUpdateMod" class="form-label">Select Mod:</label>
                                     <select id=selectUpdateMod class="form-select mb-2"
-                                        aria-label="Default select example" required>
+                                        aria-label="Select mod to update" required>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -211,17 +211,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="updateInstallDate" class="form-label">Install Date:</label>
-                                    <input id="updateInstallDate" name="updateInstallDate" type="text"
+                                    <input id="updateInstallDate" name="updateInstallDate" type="date"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="updateInstallMileage" class="form-label">Install Mileage:</label>
-                                    <input id="updateInstallMileage" name="updateInstallMileage" type="text"
+                                    <input id="updateInstallMileage" name="updateInstallMileage" type="number" min="0"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div>
                                     <label for="updateModPrice" class="form-label">Price:</label>
-                                    <input id="updateModPrice" name="updateModPrice" type="text"
+                                    <input id="updateModPrice" name="updateModPrice" type="number" min="0" step="0.01"
                                         class="form-control mb-2" required>
                                 </div>
                                 <div class="d-grid gap-2">
@@ -240,7 +240,7 @@
                                 <div>
                                     <label for="selectDeleteCar" class="form-label">Select Car:</label>
                                     <select id=selectDeleteCar class="form-select mb-2"
-                                        aria-label="Default select example" required>
+                                        aria-label="Select car to delete" required>
                                     </select>
                                 </div>
                                 <div class="d-grid gap-2">
@@ -259,7 +259,7 @@
                                 <div>
                                     <label for="selectDeleteMod" class="form-label">Select Mod to delete:</label>
                                     <select id=selectDeleteMod class="form-select mb-2"
-                                        aria-label="Default select example" required>
+                                        aria-label="Select mod to delete from car" required>
                                     </select>
                                 </div>
                                 <div class="d-grid gap-2">
