@@ -102,8 +102,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="addInstallDate" class="form-label">Install Date:</label>
-                                    <input id="addInstallDate" name="addInstallDate" type="date"
-                                        class="form-control mb-2" required>
+                                    <input id="addInstallDate" name="addInstallDate" type="text"
+                                        pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}"
+                                        class="form-control mb-2" placeholder="dd/mm/yyyy" required>
                                 </div>
                                 <div>
                                     <label for="addInstallMileage" class="form-label">Install Mileage:</label>
@@ -211,8 +212,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="updateInstallDate" class="form-label">Install Date:</label>
-                                    <input id="updateInstallDate" name="updateInstallDate" type="date"
-                                        class="form-control mb-2" required>
+                                    <input id="updateInstallDate" name="updateInstallDate" type="text"
+                                        pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}"
+                                        class="form-control mb-2" placeholder="dd/mm/yyyy" required>
                                 </div>
                                 <div>
                                     <label for="updateInstallMileage" class="form-label">Install Mileage:</label>
