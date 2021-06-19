@@ -28,7 +28,7 @@ import com.qa.hwa.domain.Car;
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:hwa-schema.sql", "classpath:hwa-data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class CarIntegrationTest {
+class CarIntegrationTest {
 
 	@Autowired
 	private MockMvc mvc;

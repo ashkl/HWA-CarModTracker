@@ -67,6 +67,5 @@ public class ModificationDTO {
 	}
 
 	public ModificationDTO() {
-		// TODO Auto-generated constructor stub
 	}
 }

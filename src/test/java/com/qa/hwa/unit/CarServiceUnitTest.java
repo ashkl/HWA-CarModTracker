@@ -21,7 +21,7 @@ import com.qa.hwa.utils.CarMapper;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class CarServiceUnitTest {
+class CarServiceUnitTest {
 	
 	@Autowired
 	private CarService service;

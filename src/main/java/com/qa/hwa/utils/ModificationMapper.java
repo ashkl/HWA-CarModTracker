@@ -10,7 +10,7 @@ public class ModificationMapper implements Mapper<Modification, ModificationDTO>
 
 	@Override
 	public ModificationDTO mapToDTO(Modification mod) {
-		ModificationDTO dto = new ModificationDTO();
+		var dto = new ModificationDTO();
 		
 		dto.setModId(mod.getModId());
 		dto.setModName(mod.getModName());
@@ -24,7 +24,6 @@ public class ModificationMapper implements Mapper<Modification, ModificationDTO>
 
 	@Override
 	public Modification mapFromDTO(ModificationDTO dto) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

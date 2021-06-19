@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
-public class ModificationTest {
+class ModificationTest {
 
 	@Test
-	public void testEquals() {
+	void testEquals() {
 		Car car1 = new Car();
 		car1.setMake("BMW");
 		

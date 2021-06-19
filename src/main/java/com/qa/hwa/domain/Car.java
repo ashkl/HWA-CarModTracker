@@ -158,8 +158,8 @@ public class Car {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final var prime = 31;
+		var result = 1;
 		result = prime * result + ((bhp == null) ? 0 : bhp.hashCode());
 		result = prime * result + ((boughtMileage == null) ? 0 : boughtMileage.hashCode());
 		result = prime * result + ((carId == null) ? 0 : carId.hashCode());

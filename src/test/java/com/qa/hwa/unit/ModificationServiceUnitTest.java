@@ -22,7 +22,7 @@ import com.qa.hwa.utils.ModificationMapper;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class ModificationServiceUnitTest {
+class ModificationServiceUnitTest {
 
 	@Autowired
 	private ModificationService service;

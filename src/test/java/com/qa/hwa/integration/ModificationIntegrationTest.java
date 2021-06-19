@@ -29,7 +29,7 @@ import com.qa.hwa.domain.Modification;
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:hwa-schema.sql", "classpath:hwa-data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class ModificationIntegrationTest {
+class ModificationIntegrationTest {
 
 	@Autowired
 	private MockMvc mvc;
