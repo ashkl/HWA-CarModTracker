@@ -14,6 +14,9 @@
 	<description>Track car modifications.</description>
 	<properties>
 		<java.version>16</java.version>
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.language>java</sonar.language>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
