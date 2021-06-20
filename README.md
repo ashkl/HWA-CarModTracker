@@ -16,10 +16,12 @@ A step by step series of examples that tell you how to get a development environ
 To get started, please install:
 
 - JDK (Java Development Kit) 16
-  - JDK 11 is optional for sonarQube to work
+  - JDK 11 is optional for SonarQube to work
 - Apache Maven 3.8.1
 - MySQL Server & Workbench 5.7+
 - Eclipse or another Java IDE of your choice
+- Optional:
+  - Microsoft Visual Studio Community - Easy coding of HTML, JavaScript and CSS.
 
 #### Java Installation
 
@@ -215,6 +217,8 @@ The web application is designed to be easy to use. All the function of the websi
 
     These files can be edited in an IDE such as Microsoft Visual Studio or even notepad.
 
+The project is now ready for development and testing!
+
 ## Running the tests
 
 The tests have been created so that it will not use the database that is used for production. Instead it uses a H2 database. This is a database that is created in memory, therefore it will not affect the production database. The settings for this database is located in **application-test.properties**. Just like in the production properties, the server port can be changed if you would like to. You can also interact with the H2 database by going to **localhost:8080/h2-console**.
@@ -323,9 +327,53 @@ To run all the tests simply right click the project in the Project Explorer wind
 
 ![Imgur](https://i.imgur.com/IrgJ1mB.png)
 
+### SonarQube
 
+SonarQube is a static analysis tool which scans your whole project to help you refactor your code, searches for vulnerabilities and detects and code smells. This is a great tool to use to make sure the quality of the code is up to standard. It also makes your whole project code more efficient. SonarQube also displays the coverage of your project and shows any missed lines when testing. The instructions below will show you how to install SonarQube and how to use it for this project:
 
-## Deployment
+1. Make sure all the following dependencies are inside the **pom.xml** file.
+
+![](https://i.imgur.com/9doUKSL.png)
+
+![](https://i.imgur.com/24rIZW0.png)
+
+2. Navigate to the [SonarQube](https://docs.sonarqube.org/latest/setup/get-started-2-minutes/) website and select **download** under **From the zip file**. From there select and download the **Community Edition**.
+
+![](https://i.imgur.com/uSd586J.png)
+
+3. Unzip the zip file and copy and paste in your **C:\\** drive for easy access.
+
+![](https://i.imgur.com/W0witwB.png)
+
+4. Open a new command window enter the following instruction to start SonarQube.
+
+![](https://i.imgur.com/lXUqQHc.png)
+
+5. If SonarQube is configured successfully, the command window should look like this and wont allow you to enter any more commands. If your SonarQube did not start, you might have to change the port number in the sonar properties file. The default port is set to 9000.
+
+![](https://i.imgur.com/zSPmiqG.png)
+
+6. Open up your web browser and navigate to **localhost:9000**. A login page will be displayed like the one below. The default username and password is **admin** for both. It will then ask you to change your password to something more secure.
+
+![](https://i.imgur.com/H5RuE6f.png)
+
+7. You will then be taken to the SonarQube dashboard. The dashboard will be empty since there are no projects currently sent to SonarQube.
+
+[](https://i.imgur.com/SZhVJHz.png)
+
+![](https://i.imgur.com/23EEbzQ.png)
+
+8. To send your HWA project to SonarQube for analysis, simply open a command window/git window inside your project folder and enter the following command:
+
+   `mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin`
+
+   This will build the application and send the results to SonarQube.
+
+   ![](https://i.imgur.com/desygmP.png)
+
+Thats it! SonarQube is now successfully setup!
+
+### Deployment
 
 To deploy this program once its been developed and tested:
 
@@ -379,8 +427,8 @@ We use [SemVer](http://semver.org/) for versioning.
 All supporting documentation can be found in the "Documentation" folder. This folder includes the following:
 
 1. Risk assessment.pdf
-2. ERD Initial
-3. UML Diagram
+2. ERD Initial.png
+3. UML Diagram.png
 
 ## Authors
 
