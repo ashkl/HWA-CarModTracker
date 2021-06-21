@@ -428,14 +428,11 @@ All supporting documentation can be found in the "Documentation" folder. This fo
 
 1. Jira Folder - Screenshots from Jira
 2. SonarQube - Screenshots from SonarQube
-
 3. Risk assessment.pdf
-
 4. ERD Initial.png
-
 5. UML Diagram.png
-
 6. HWA Project.pptx
+7. HWA Project.pdf
 
 ## Authors
 
