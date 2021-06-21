@@ -11,7 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class SpringBootApplicationTest {
 	
-	@Ignore
+	@Ignore //Test ignored because it causes conflict when running all the tests at the same time.
+
 	//@Test
 	void contextLoads() {
 	}

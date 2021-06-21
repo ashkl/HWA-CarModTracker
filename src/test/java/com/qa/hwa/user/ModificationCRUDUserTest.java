@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +25,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @Sql(scripts = {"classpath:hwa-schema.sql", "classpath:hwa-data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class ModificationCRUDUserTest {
+class ModificationCRUDUserTest {
 	
 	private static WebDriver driver;
 	private static String URL = "http://localhost:8080/";
@@ -44,7 +45,7 @@ public class ModificationCRUDUserTest {
 	
 	//@Ignore
 	@Test
-	public void getMods() throws InterruptedException {
+	void getMods() throws InterruptedException {
 		driver.get(URL);
 		//Thread.sleep(10000000);
 		
@@ -65,7 +66,7 @@ public class ModificationCRUDUserTest {
 	
 	//@Ignore
 	@Test
-	public void createMod() throws InterruptedException {
+	void createMod() throws InterruptedException {
 		driver.get(URL);
 		//Thread.sleep(100000000);
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
@@ -111,7 +112,7 @@ public class ModificationCRUDUserTest {
 	
 	//@Ignore
 	@Test
-	public void updateMod() throws InterruptedException {
+	void updateMod() throws InterruptedException {
 		driver.get(URL);
 		
 		//Thread.sleep(100000000);
@@ -159,7 +160,7 @@ public class ModificationCRUDUserTest {
 	
 	//@Ignore
 	@Test 
-	public void removeMod() throws InterruptedException {
+	void removeMod() throws InterruptedException {
 		driver.get(URL);
 		
 		//Thread.sleep(1000000);

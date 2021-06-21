@@ -21,7 +21,7 @@ import com.qa.hwa.utils.CarMapper;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class CarServiceUnitTest {
+class CarServiceUnitTest {
 	
 	@Autowired
 	private CarService service;
@@ -39,7 +39,7 @@ public class CarServiceUnitTest {
 		Car testSavedCar = new Car(1, "BMW", "320cd", 2005, "Silver", "Manual", "Diesel", 210, 120000L, null);
 		
 		//WHEN
-		Mockito.when(this.repo.save(testCar)).thenReturn(testCar);
+		Mockito.when(this.repo.save(testCar)).thenReturn(testSavedCar);
 		
 		//THEN
 		assertThat(this.service.createCar(testCar)).isEqualTo(this.mapper.mapToDTO(testSavedCar));
@@ -78,7 +78,7 @@ public class CarServiceUnitTest {
 		
 		//WHEN
 		Mockito.when(this.repo.findById(testId)).thenReturn(Optional.of(existing));
-		Mockito.when(this.repo.save(updatedCar)).thenReturn(updatedCar);
+		Mockito.when(this.repo.save(updateCar)).thenReturn(updatedCar);
 		
 		//THEN
 		assertThat(this.service.updateCar(testId, updateCar)).isEqualTo(this.mapper.mapToDTO(updatedCar));

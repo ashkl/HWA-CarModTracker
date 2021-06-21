@@ -34,7 +34,7 @@ public class ModificationService {
 	}
 	
 	public List<ModificationDTO> getModsByCar(Integer id){
-		Car car = new Car(id);
+		var car = new Car(id);
 		List<Modification> mods = this.repo.findByCar(car);
 		List<ModificationDTO> dtos =  new ArrayList<>();
 		

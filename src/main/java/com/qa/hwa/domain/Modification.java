@@ -106,8 +106,8 @@ public class Modification {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final var prime = 31;
+		var result = 1;
 		result = prime * result + ((car == null) ? 0 : car.hashCode());
 		result = prime * result + ((installDate == null) ? 0 : installDate.hashCode());
 		result = prime * result + ((installMileage == null) ? 0 : installMileage.hashCode());

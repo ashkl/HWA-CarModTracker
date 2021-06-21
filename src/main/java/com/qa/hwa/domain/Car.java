@@ -2,6 +2,7 @@ package com.qa.hwa.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Car {
 	private Integer bhp;
 	private Long boughtMileage;
 	
-	@OneToMany(mappedBy = "car")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
 	@JsonIgnore
 	private List<Modification> mods;
 	
@@ -158,8 +159,8 @@ public class Car {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final var prime = 31;
+		var result = 1;
 		result = prime * result + ((bhp == null) ? 0 : bhp.hashCode());
 		result = prime * result + ((boughtMileage == null) ? 0 : boughtMileage.hashCode());
 		result = prime * result + ((carId == null) ? 0 : carId.hashCode());

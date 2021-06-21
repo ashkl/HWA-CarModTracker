@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @Sql(scripts = {"classpath:hwa-schema.sql", "classpath:hwa-data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class CarCRUDUserTest {
+class CarCRUDUserTest {
 	
 	private static WebDriver driver;
 	private static String URL = "http://localhost:8080/";
@@ -43,7 +43,7 @@ public class CarCRUDUserTest {
 	
 
 	@Test
-	public void getCars() throws InterruptedException {
+	void getCars() throws InterruptedException {
 		driver.get(URL);
 		
 	    driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
@@ -66,7 +66,7 @@ public class CarCRUDUserTest {
 	
 
 	@Test
-	public void createCar() throws InterruptedException {
+	void createCar() throws InterruptedException {
 		driver.get(URL);
 		
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
@@ -119,7 +119,7 @@ public class CarCRUDUserTest {
 	}
 	
 	@Test
-	public void updateCar() throws InterruptedException {
+	void updateCar() throws InterruptedException {
 		driver.get(URL);
 		
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
@@ -176,7 +176,7 @@ public class CarCRUDUserTest {
 	}
 	
 	@Test 
-	public void removeCar() throws InterruptedException {
+	void removeCar() throws InterruptedException {
 		driver.get(URL);
 		
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);

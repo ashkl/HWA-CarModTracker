@@ -22,7 +22,7 @@ public class CarMapper implements Mapper<Car, CarDTO>{
 
 	@Override
 	public CarDTO mapToDTO(Car car) {
-		CarDTO dto = new CarDTO();
+		var dto = new CarDTO();
 		dto.setCarId(car.getCarId());
 		dto.setMake(car.getMake());
 		dto.setModel(car.getModel());
@@ -47,7 +47,6 @@ public class CarMapper implements Mapper<Car, CarDTO>{
 
 	@Override
 	public Car mapFromDTO(CarDTO dto) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
