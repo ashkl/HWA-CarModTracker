@@ -426,9 +426,16 @@ We use [SemVer](http://semver.org/) for versioning.
 
 All supporting documentation can be found in the "Documentation" folder. This folder includes the following:
 
-1. Risk assessment.pdf
-2. ERD Initial.png
-3. UML Diagram.png
+1. Jira Folder - Screenshots from Jira
+2. SonarQube - Screenshots from SonarQube
+
+3. Risk assessment.pdf
+
+4. ERD Initial.png
+
+5. UML Diagram.png
+
+6. HWA Project.pptx
 
 ## Authors
 
